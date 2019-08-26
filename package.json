@@ -1,14 +1,18 @@
 {
-  "name": "vue-study-102",
+  "name": "vue-study-104",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "login": "export http_proxy=http://localhost:1087 && export https_proxy=http://localhost:1087 && export NO_PROXY=localhost,127.0.0.1 && firebase login --no-localhost --debug",
+    "deploy": "firebase deploy"
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "element-ui": "^2.11.1",
+    "firebase": "^6.4.2",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"

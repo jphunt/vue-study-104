@@ -1,18 +1,43 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <el-button type="primary" @click="add">add db record</el-button>
+    <el-button type="primary" @click="view">view</el-button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import db from '../config/firebase'
 
 export default {
-  name: 'home',
+  name: 'Home',
   components: {
-    HelloWorld,
   },
-};
+  mounted() {
+    console.log(db)
+  },
+  methods: {
+    add() {
+      db.collection('users')
+        .add({
+          first: 'Alan',
+          middle: 'Mathison',
+          last: 'Turing',
+          born: 1912
+        })
+        .then(function(docRef) {
+          console.log('Document written with ID: ', docRef.id)
+        })
+        .catch(function(error) {
+          console.error('Error adding document: ', error)
+        })
+    },
+    view() {
+      db.collection('users')
+        .get()
+        .then((querySnapshot) => {
+          console.log(querySnapshot)
+        })
+    }
+  }
+}
 </script>
